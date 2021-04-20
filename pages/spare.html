@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+        body {
+            background-image: url('');
+            background-attachment: fixed;
+            background-position: center;
+            overflow-x: hidden;
+        }
+        .highlighted {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .row {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .form {
+            color: black;
+            border: 0;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            border-radius: 10px;
+            background-color: #0059a9;
+            background-image: linear-gradient(to top left,
+                    rgba(0, 0, 0, .2),
+                    rgba(0, 0, 0, .2) 30%,
+                    rgba(0, 0, 0, 0));
+            box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+        }
+        .form:hover {
+            background-color: #0059FF;
+        }
+        .button {
+            background-color: orange;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        .center1 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+
+    <script type="text/javascript">
+        function go(loc) {
+            document.getElementById('form').src = loc;
+        }
+    </script>
+
+     <!-- Home screen after inactivty time -->
+     <script>
+        (function() {
+        
+            const idleDurationSecs = 60;    // X number of seconds
+            const redirectUrl = '../index.html';  // Redirect idle users to this URL
+            let idleTimeout; // variable to hold the timeout, do not modify
+        
+            const resetIdleTimeout = function() {
+        
+                // Clears the existing timeout
+                if(idleTimeout) clearTimeout(idleTimeout);
+        
+                // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+                idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+            };
+        
+            // Init on page load
+            resetIdleTimeout();
+        
+            // Reset the idle timeout on any of the events listed below
+            ['click', 'touchstart', 'mousemove'].forEach(evt => 
+                document.addEventListener(evt, resetIdleTimeout, false)
+            );
+        
+        })();
+        </script>
+    <title>Spare Devices</title>
+</head>
+
+<body>
+    <br>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+
+        <div id="welcome" class="col-sm-8">
+            <img src="../resources/banner.jpg" alt="Christian Family Care" class="center" >
+        </div>
+
+        <div class="col-sm-2">
+        </div>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+
+        <div id="start" class="col-sm-6">
+            <h2><a class="btn btn-primary btn-lg  btn-block" href="../index.html">Back</a></h2><br>
+        </div>
+
+        <div class="col-sm-3">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+
+        <div class="col-sm-8">
+            <form method="post">
+                <input class='btn btn-primary btn-lg' name="formSelection" type="button" value="Device Check In" onclick="go('https://airtable.com/embed/shrRNVBCXvpfCCCz5?backgroundColor=cyan')"/>
+                &nbsp;&nbsp;&nbsp;
+                <input class='btn btn-primary btn-lg' name="formSelection" type="button" value="Device Return" onclick="go('https://airtable.com/embed/shrmdE9IzbzkTLQtk?backgroundColor=cyan')"/>
+
+            </form><br>
+            <iframe id="form" class="airtable-embed" src= "about:blank"
+                frameborder="0" onmousewheel="" width="100%" height="700"
+                style="background: transparent; border: 1px solid #ccc;">
+            </iframe>
+      </div> 
+
+      <div class="col-sm-2">
+      </div>
+    </div>
+
+</body>
+
+</html>
